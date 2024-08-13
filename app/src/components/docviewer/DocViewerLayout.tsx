@@ -2,12 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DxButton, DxTextbox, DxToggle } from 'genesys-react-components';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { GenesysDevIcon, GenesysDevIcons } from 'genesys-dev-icons';
 
 import { useDarkTheme, useNavCollapsed, useNavWidth } from '../../helpers/SettingsManager';
+import MarkdownDisplay from '../markdowndisplay/MarkdownDisplay';
+import { getSDKDocConfig } from '../../helpers/SDKConfig';
+import logoDark from '../../images/logo-dark.svg';
+import logolight from '../../images/logo-light.svg';
 
 import './DocViewerLayout.scss';
-import MarkdownDisplay from '../markdowndisplay/MarkdownDisplay';
-import { GenesysDevIcon, GenesysDevIcons } from 'genesys-dev-icons';
 
 const NAV_MIN_WIDTH = 300;
 const NAV_COLLAPSED_WIDTH = 32;
@@ -15,6 +18,8 @@ const NAV_MAX_WIDTH_FACTOR = 0.7;
 
 const pathAndExtensionRegex = /^(.+?)(:?\.(md|html))?$/i;
 const hashRegex = /^#(.+)$/i;
+
+const sdkDocConfig = getSDKDocConfig();
 
 export default function DocViewerLayout() {
 	const [darkThemeEnabled, setDarkThemeEnabled] = useDarkTheme();
@@ -34,14 +39,13 @@ export default function DocViewerLayout() {
 	useEffect(() => {
 		const onResize = (e: UIEvent) => {
 			const maxWidth = Math.trunc(document.documentElement.clientWidth * NAV_MAX_WIDTH_FACTOR);
-			// if (navWidth > maxWidth) setNavWidth(maxWidth);
 			if (sidebarRef.current?.clientWidth! > maxWidth) setNavWidth(maxWidth);
 		};
 
 		window.addEventListener('resize', onResize);
 
 		(async () => {
-			const res = await axios.get('https://developer-content.genesys.cloud/data/docexplorer/purecloudjava.json');
+			const res = await axios.get('/docs/index.json');
 			const items = (res.data as string[])
 				.sort((a, b) => (a.toLowerCase() === b.toLowerCase() ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1))
 				.map((s) => {
@@ -126,7 +130,7 @@ export default function DocViewerLayout() {
 			if (match && match[1] !== loadedPath.current) {
 				console.log(' match[1]', location.pathname, match[1]);
 				loadedPath.current = match[1];
-				const doc = await axios.get(`${process.env.REACT_APP_CONTENT_PATH}${loadedPath.current}.md`);
+				const doc = await axios.get(`/docs/${loadedPath.current}.md`);
 
 				// Double check against outdated async result
 				if (match[1] === loadedPath.current) {
@@ -156,12 +160,17 @@ export default function DocViewerLayout() {
 		<div className={`doc-viewer doc-viewer-${darkThemeEnabled ? 'dark' : 'light'}`}>
 			<div className={`navigation${isDragging ? ' dragging' : ''}`} ref={sidebarRef} style={{ width: `${navDisplayWidth}px` }}>
 				<div className="navigation-header">
-					<h1>
-						<Link to="/">Java SDK</Link>
+					<img src={darkThemeEnabled ? logoDark : logolight} alt="Genesys" className="genesys-logo" />
+					<h1 className="header-title">
+						<Link to="/">{sdkDocConfig.title}</Link>
 					</h1>
-					<Link to="https://maven-badges.herokuapp.com/maven-central/com.mypurecloud/platform-client-v2" target="_blank">
-						<img src="https://maven-badges.herokuapp.com/maven-central/com.mypurecloud/platform-client-v2/badge.svg" alt="GitHub Release" />
-					</Link>
+					<div className="badges">
+						{sdkDocConfig.badges.map((badgeConfig, i) => (
+							<Link key={i} to={badgeConfig.packageBadgeLink} target="_blank" title={badgeConfig.text}>
+								<img src={badgeConfig.packageBadgeURL} alt={badgeConfig.text} />
+							</Link>
+						))}
+					</div>
 					<DxToggle
 						label="Dark theme"
 						value={darkThemeEnabled}

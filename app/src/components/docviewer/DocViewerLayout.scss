@@ -37,6 +37,24 @@
 			margin-right: 8px;
 			padding: 12px;
 			border-right: 1px solid var(--theme-core-layout-border-color);
+			text-align: center;
+
+			.genesys-logo {
+				width: 230px;
+			}
+
+			.header-title {
+				font-size: 32px;
+			}
+
+			.badges {
+				display: flex;
+				flex-flow: row wrap;
+				gap: 6px;
+				align-items: flex-start;
+				justify-content: space-around;
+				margin: 12px 0;
+			}
 
 			.filter-textbox {
 				margin: 0;
@@ -55,6 +73,7 @@
 			margin-right: 8px;
 			box-sizing: border-box;
 			padding: 0 12px 24px 12px;
+			height: 100%;
 
 			.nav-list {
 				list-style: none;

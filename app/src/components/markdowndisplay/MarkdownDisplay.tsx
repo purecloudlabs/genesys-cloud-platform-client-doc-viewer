@@ -13,7 +13,6 @@ interface IProps {
 const pathAndExtensionRegex = /^(.+?)(:?\.(md|html))?$/i;
 
 const customRenderers = {
-	// Override image renderer to use component to load image from API
 	[YeastInlineNodeTypes.Link]: (node: YeastChild, renderer: ReactRenderer): ReactNode | undefined => {
 		if (!Object.hasOwn(node, 'type') || (node as any).type.toLowerCase() !== YeastInlineNodeTypes.Link) return undefined;
 		const typedNode = node as LinkNode;

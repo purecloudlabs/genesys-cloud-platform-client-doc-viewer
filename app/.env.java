@@ -1,1 +1,1 @@
-REACT_APP_CONTENT_PATH=/docs/purecloudjava/
+REACT_APP_SDK_LANGUAGE=java
