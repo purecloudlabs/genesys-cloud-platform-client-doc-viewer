@@ -11,6 +11,7 @@ import logoDark from '../../images/logo-dark.svg';
 import logolight from '../../images/logo-light.svg';
 
 import './DocViewerLayout.scss';
+import Badge from './Badge';
 
 const NAV_MIN_WIDTH = 300;
 const NAV_COLLAPSED_WIDTH = 32;
@@ -58,6 +59,7 @@ export default function DocViewerLayout() {
 		return () => {
 			window.removeEventListener('resize', onResize);
 		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
@@ -146,11 +148,16 @@ export default function DocViewerLayout() {
 
 			// Update scroll anchor
 			scrollIntoView();
-
-			// setTimeout(() => {
-			// }, 1000);
-		} catch (err) {
+		} catch (err: any) {
 			console.error(err);
+			let msg = "An unexpected error occurred loading the content, see the browser's JavaScript console for details.";
+			if (err?.response?.status === 404) {
+				msg = '404: Page not found';
+			}
+			setMarkdown(`# Error
+:::{"alert":"critical","title":"Page not loaded","collapsible":false,"autoCollapse":false}
+${msg}
+:::`);
 		}
 	};
 
@@ -170,6 +177,9 @@ export default function DocViewerLayout() {
 								<img src={badgeConfig.packageBadgeURL} alt={badgeConfig.text} />
 							</Link>
 						))}
+						<Link to="releaseNotes">
+							<Badge text="release notes" backgroundColor={sdkDocConfig.badgeColor} />
+						</Link>
 					</div>
 					<DxToggle
 						label="Dark theme"
@@ -180,7 +190,7 @@ export default function DocViewerLayout() {
 					/>
 					<DxTextbox
 						className="filter-textbox"
-						label="Filter"
+						label="SDK Resource Filter"
 						onChange={(newText) => setFilterTerm(newText || '')}
 						changeDebounceMs={0}
 						clearOnEscape={true}

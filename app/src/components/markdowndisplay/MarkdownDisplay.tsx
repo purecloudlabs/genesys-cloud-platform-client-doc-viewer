@@ -1,7 +1,7 @@
 import React from 'react';
 import { LoadingPlaceholder } from 'genesys-react-components';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { DocumentNode, ImageNode, LinkNode, YeastBlockNodeTypes, YeastChild, YeastInlineNodeTypes } from 'yeast-core';
+import { DocumentNode, HeadingNode, LinkNode, scrapeText, YeastBlockNodeTypes, YeastChild, YeastInlineNodeTypes } from 'yeast-core';
 import { MarkdownParser } from 'yeast-markdown-parser';
 import { ReactRenderer } from 'yeast-react-renderer';
 import { Link } from 'react-router-dom';
@@ -16,23 +16,35 @@ const customRenderers = {
 	[YeastInlineNodeTypes.Link]: (node: YeastChild, renderer: ReactRenderer): ReactNode | undefined => {
 		if (!Object.hasOwn(node, 'type') || (node as any).type.toLowerCase() !== YeastInlineNodeTypes.Link) return undefined;
 		const typedNode = node as LinkNode;
-		console.log(typedNode.href);
 		let href = typedNode.href;
 
 		// Strip content file extensions
 		let match = pathAndExtensionRegex.exec(href);
 		if (match) href = match[1];
 
-		// Make relative path
-		// match = relativeLinkRegex.exec(href);
-		// if (!match) href = `./${href}`;
-
-		console.log('href', href);
 		return (
 			<Link to={href} title={typedNode.title}>
 				{renderer.renderComponents(typedNode.children)}
 			</Link>
 		);
+	},
+	[YeastBlockNodeTypes.Heading]: (node: YeastChild, renderer: ReactRenderer): ReactNode | undefined => {
+		// NOTE: this is the base heading renderer from yeast, but with a custom-made ID for the anchor link
+		if (!Object.hasOwn(node, 'type') || (node as any).type.toLowerCase() !== YeastBlockNodeTypes.Heading) return undefined;
+		const typedNode = node as HeadingNode;
+		// Override default ID to retain case -- the SDK doc generator uses the enum name with case here
+		typedNode.id = scrapeText(typedNode).replaceAll(/[^a-z0-9]/gi, '-');
+
+		const level = typedNode.level >= 1 && typedNode.level <= 7 && typedNode.level % 1 === 0 ? typedNode.level : 1;
+		if (level === 7) {
+			return (
+				<span className={`h7`} id={typedNode.id}>
+					{renderer.renderComponents(typedNode.children)}
+				</span>
+			);
+		} else {
+			return React.createElement<any>(`h${level}`, { id: typedNode.id }, renderer.renderComponents(typedNode.children));
+		}
 	},
 };
 

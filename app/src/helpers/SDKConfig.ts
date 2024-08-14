@@ -6,6 +6,7 @@ export enum SDKLanguage {
 export interface SDKDocConfig {
 	title: string;
 	badges: SDKBadge[];
+	badgeColor: string;
 }
 
 export interface SDKBadge {
@@ -17,6 +18,7 @@ export interface SDKBadge {
 const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 	[SDKLanguage.Java]: {
 		title: 'Platform API Java Client',
+		badgeColor: '#4c1',
 		badges: [
 			{
 				text: 'Maven Central',
@@ -27,6 +29,7 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 	},
 	[SDKLanguage.JavaScript]: {
 		title: 'Platform API JavaScript Client',
+		badgeColor: '#007ec6',
 		badges: [
 			{
 				text: 'npm',
