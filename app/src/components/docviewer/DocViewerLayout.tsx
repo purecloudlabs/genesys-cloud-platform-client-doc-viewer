@@ -46,7 +46,7 @@ export default function DocViewerLayout() {
 		window.addEventListener('resize', onResize);
 
 		(async () => {
-			const res = await axios.get('/docs/index.json');
+			const res = await axios.get(`${process.env['PUBLIC_URL']}/docs/index.json`);
 			const items = (res.data as string[])
 				.sort((a, b) => (a.toLowerCase() === b.toLowerCase() ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1))
 				.map((s) => {
@@ -127,12 +127,11 @@ export default function DocViewerLayout() {
 	const updateDocument = async () => {
 		try {
 			// Update content
-			let pathname = location.pathname === '/' ? 'index' : location.pathname;
+			let pathname = location.pathname === '/' ? '/index' : location.pathname;
 			let match = pathAndExtensionRegex.exec(pathname);
 			if (match && match[1] !== loadedPath.current) {
-				console.log(' match[1]', location.pathname, match[1]);
 				loadedPath.current = match[1];
-				const doc = await axios.get(`/docs/${loadedPath.current}.md`);
+				const doc = await axios.get(`${process.env['PUBLIC_URL']}/docs${loadedPath.current}.md`);
 
 				// Double check against outdated async result
 				if (match[1] === loadedPath.current) {
@@ -140,7 +139,6 @@ export default function DocViewerLayout() {
 
 					const elem = document.getElementById(`link-${loadedPath.current.toLowerCase()}`);
 					if (elem) {
-						console.log(`link-${loadedPath.current.toLowerCase()}`, document.getElementById(`link-${loadedPath.current.toLowerCase()}`));
 						if (!isElementVisible(elem)) elem.scrollIntoView();
 					}
 				}

@@ -13,7 +13,7 @@ function App() {
 		<RecoilRoot>
 			<RecoilNexus />
 			<Suspense fallback={<LoadingPlaceholder />}>
-				<BrowserRouter>
+				<BrowserRouter basename={process.env['PUBLIC_URL'] || '/'}>
 					<DocViewerLayout />
 				</BrowserRouter>
 			</Suspense>

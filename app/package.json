@@ -29,9 +29,11 @@
 	},
 	"scripts": {
 		"start": "react-scripts start",
-		"build": "react-scripts build",
 		"start:java": "./node_modules/.bin/env-cmd -f .env.java npm run start",
 		"start:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run start",
+		"build": "react-scripts build",
+		"build:java": "./node_modules/.bin/env-cmd -f .env.java npm run build",
+		"build:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
