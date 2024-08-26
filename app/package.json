@@ -10,7 +10,7 @@
 		"@types/node": "^16.18.104",
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
-		"axios": "^1.7.3",
+		"axios": "^1.7.5",
 		"genesys-dev-icons": "^1.1.0",
 		"genesys-react-components": "^1.0.3",
 		"react": "^18.3.1",
@@ -24,8 +24,8 @@
 		"typescript": "^4.9.5",
 		"web-vitals": "^2.1.4",
 		"yeast-core": "^1.1.0",
-		"yeast-markdown-parser": "^1.5.0-devengage-2599-link-image-parsing.524",
-		"yeast-react-renderer": "^1.0.1"
+		"yeast-markdown-parser": "^1.5.0",
+		"yeast-react-renderer": "^1.1.0"
 	},
 	"scripts": {
 		"start": "react-scripts start",
