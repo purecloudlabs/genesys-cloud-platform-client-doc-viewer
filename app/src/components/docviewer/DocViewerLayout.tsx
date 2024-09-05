@@ -67,6 +67,7 @@ export default function DocViewerLayout() {
 		if (match && match[2]) {
 			let newLocation = match[1] + location.hash;
 			navigate(newLocation, { replace: true });
+			document.getElementById('navigation-content')?.scrollTo(0, 0);
 			return;
 		}
 		updateDocument();
