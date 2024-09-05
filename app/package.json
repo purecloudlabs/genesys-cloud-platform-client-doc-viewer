@@ -32,10 +32,12 @@
 		"start:java": "./node_modules/.bin/env-cmd -f .env.java npm run start",
 		"start:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run start",
 		"start:python": "./node_modules/.bin/env-cmd -f .env.python npm run start",
+		"start:dotnet": "./node_modules/.bin/env-cmd -f .env.dotnet npm run start",
 		"build": "react-scripts build",
 		"build:java": "./node_modules/.bin/env-cmd -f .env.java npm run build",
 		"build:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run build",
 		"build:python": "./node_modules/.bin/env-cmd -f .env.python npm run build",
+		"build:dotnet": "./node_modules/.bin/env-cmd -f .env.dotnet npm run build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},

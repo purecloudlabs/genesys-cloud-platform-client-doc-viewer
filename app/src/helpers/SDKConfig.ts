@@ -2,6 +2,7 @@ export enum SDKLanguage {
 	Java = 'java',
 	JavaScript = 'javascript',
 	Python = 'python',
+	DotNet ='dotnet'
 }
 
 export interface SDKDocConfig {
@@ -49,9 +50,20 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 		badgeColor: '#4c1',
 		badges: [
 			{
-				text: 'PyPi version',
+				text: 'PyPi',
 				packageBadgeURL: 'https://badge.fury.io/py/PureCloudPlatformClientV2.svg',
 				packageBadgeLink: 'https://pypi.org/project/PureCloudPlatformClientV2/',
+			},
+		],
+	},
+	[SDKLanguage.DotNet]: {
+		title: 'Platform API .NET Client',
+		badgeColor: '#007ec6',
+		badges: [
+			{
+				text: 'Nuget',
+				packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+				packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
 			},
 		],
 	},
