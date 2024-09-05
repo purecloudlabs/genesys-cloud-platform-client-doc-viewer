@@ -1,6 +1,7 @@
 export enum SDKLanguage {
 	Java = 'java',
 	JavaScript = 'javascript',
+	Python = 'python',
 }
 
 export interface SDKDocConfig {
@@ -40,6 +41,17 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 				text: 'GitHub release',
 				packageBadgeURL: 'https://img.shields.io/github/release/mypurecloud/platform-client-sdk-javascript.svg',
 				packageBadgeLink: 'https://github.com/MyPureCloud/platform-client-sdk-javascript/releases',
+			},
+		],
+	},
+	[SDKLanguage.Python]: {
+		title: 'Platform API Python Client',
+		badgeColor: '#4c1',
+		badges: [
+			{
+				text: 'PyPi version',
+				packageBadgeURL: 'https://badge.fury.io/py/PureCloudPlatformClientV2.svg',
+				packageBadgeLink: 'https://pypi.org/project/PureCloudPlatformClientV2/',
 			},
 		],
 	},

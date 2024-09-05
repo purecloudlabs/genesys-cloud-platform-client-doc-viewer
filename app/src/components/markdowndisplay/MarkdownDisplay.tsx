@@ -32,8 +32,12 @@ const customRenderers = {
 		// NOTE: this is the base heading renderer from yeast, but with a custom-made ID for the anchor link
 		if (!Object.hasOwn(node, 'type') || (node as any).type.toLowerCase() !== YeastBlockNodeTypes.Heading) return undefined;
 		const typedNode = node as HeadingNode;
-		// Override default ID to retain case -- the SDK doc generator uses the enum name with case here
-		typedNode.id = scrapeText(typedNode).replaceAll(/[^a-z0-9]/gi, '-');
+		/***  
+		 * Override default ID to:
+		 *   retain case -- the SDK doc generator uses the enum name with case here
+		 *   allow underscores -- python uses underscores in the function names
+		 */
+		typedNode.id = scrapeText(typedNode).replaceAll(/[^a-z0-9_]/gi, '-');
 
 		const level = typedNode.level >= 1 && typedNode.level <= 7 && typedNode.level % 1 === 0 ? typedNode.level : 1;
 		if (level === 7) {
