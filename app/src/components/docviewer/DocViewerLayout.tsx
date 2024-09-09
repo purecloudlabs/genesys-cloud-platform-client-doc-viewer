@@ -46,14 +46,18 @@ export default function DocViewerLayout() {
 		window.addEventListener('resize', onResize);
 
 		(async () => {
-			const res = await axios.get(`${process.env['PUBLIC_URL']}/docs/index.json`);
-			const items = (res.data as string[])
-				.sort((a, b) => (a.toLowerCase() === b.toLowerCase() ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1))
-				.map((s) => {
-					const match = pathAndExtensionRegex.exec(s);
-					return match ? match[1] : s;
-				});
-			setNavItems(items);
+			try {
+				const res = await axios.get(`${process.env['PUBLIC_URL']}/docs/index.json`);
+				const items = (res.data as string[])
+					.sort((a, b) => (a.toLowerCase() === b.toLowerCase() ? 0 : a.toLowerCase() > b.toLowerCase() ? 1 : -1))
+					.map((s) => {
+						const match = pathAndExtensionRegex.exec(s);
+						return match ? match[1] : s;
+					});
+				setNavItems(items);
+			} catch (err) {
+				console.log('failed to load doc index', err);
+			}
 		})();
 
 		return () => {

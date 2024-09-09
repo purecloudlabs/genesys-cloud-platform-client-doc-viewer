@@ -2,7 +2,12 @@ export enum SDKLanguage {
 	Java = 'java',
 	JavaScript = 'javascript',
 	Python = 'python',
-	DotNet ='dotnet'
+	DotNet = 'dotnet',
+	CLI = 'cli',
+	iOS = 'ios',
+	WebMessagingJava = 'webmessagingjava',
+	JavaGuest = 'javaguest',
+	JavaScriptGuest = 'javascriptguest',
 }
 
 export interface SDKDocConfig {
@@ -65,6 +70,61 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 				packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
 				packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
 			},
+		],
+	},
+	[SDKLanguage.CLI]: {
+		title: 'Platform API <<XXX>> Client',
+		badgeColor: '#007ec6',
+		badges: [
+			// {
+			// 	text: 'Nuget',
+			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
+			// },
+		],
+	},
+	[SDKLanguage.iOS]: {
+		title: 'Platform API iOS Client',
+		badgeColor: '#007ec6',
+		badges: [
+			// {
+			// 	text: 'Nuget',
+			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
+			// },
+		],
+	},
+	[SDKLanguage.WebMessagingJava]: {
+		title: 'Platform API <<XXX>> Client',
+		badgeColor: '#007ec6',
+		badges: [
+			// {
+			// 	text: 'Nuget',
+			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
+			// },
+		],
+	},
+	[SDKLanguage.JavaGuest]: {
+		title: 'Platform API <<XXX>> Client',
+		badgeColor: '#007ec6',
+		badges: [
+			// {
+			// 	text: 'Nuget',
+			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
+			// },
+		],
+	},
+	[SDKLanguage.JavaScriptGuest]: {
+		title: 'Platform API <<XXX>> Client',
+		badgeColor: '#007ec6',
+		badges: [
+			// {
+			// 	text: 'Nuget',
+			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
+			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
+			// },
 		],
 	},
 };
