@@ -86,6 +86,7 @@ export default function DocViewerLayout() {
 			// Scroll to top of content
 			document.getElementById('markdown-content')?.scrollTo(0, 0);
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [markdown]);
 
 	useEffect(() => {

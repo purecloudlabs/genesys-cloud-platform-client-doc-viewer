@@ -86,13 +86,7 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 	[SDKLanguage.iOS]: {
 		title: 'Platform API iOS Client',
 		badgeColor: '#007ec6',
-		badges: [
-			// {
-			// 	text: 'Nuget',
-			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
-			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
-			// },
-		],
+		badges: [],
 	},
 	[SDKLanguage.WebMessagingJava]: {
 		title: 'Platform API <<XXX>> Client',
@@ -106,25 +100,30 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 		],
 	},
 	[SDKLanguage.JavaGuest]: {
-		title: 'Platform API <<XXX>> Client',
-		badgeColor: '#007ec6',
+		title: 'Guest Chat Client - Java',
+		badgeColor: '#4c1',
 		badges: [
-			// {
-			// 	text: 'Nuget',
-			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
-			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
-			// },
+			{
+				text: 'Maven Central',
+				packageBadgeURL: 'https://maven-badges.herokuapp.com/maven-central/com.mypurecloud/purecloud-guest-chat-client/badge.svg',
+				packageBadgeLink: 'https://maven-badges.herokuapp.com/maven-central/com.mypurecloud/purecloud-guest-chat-client',
+			},
 		],
 	},
 	[SDKLanguage.JavaScriptGuest]: {
-		title: 'Platform API <<XXX>> Client',
+		title: 'Guest Chat Client - JavaScript',
 		badgeColor: '#007ec6',
 		badges: [
-			// {
-			// 	text: 'Nuget',
-			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
-			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
-			// },
+			{
+				text: 'npm',
+				packageBadgeURL: 'https://img.shields.io/npm/v/purecloud-guest-chat-client.svg',
+				packageBadgeLink: 'https://www.npmjs.com/package/purecloud-guest-chat-client',
+			},
+			{
+				text: 'GitHub release',
+				packageBadgeURL: 'https://img.shields.io/github/release/mypurecloud/purecloud-guest-chat-client.svg',
+				packageBadgeLink: 'https://github.com/MyPureCloud/purecloud-guest-chat-client/releases',
+			},
 		],
 	},
 };
