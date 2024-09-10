@@ -36,6 +36,7 @@
 		"start:ios": "./node_modules/.bin/env-cmd -f .env.ios npm run start",
 		"start:java-guest": "./node_modules/.bin/env-cmd -f .env.java-guest npm run start",
 		"start:javascript-guest": "./node_modules/.bin/env-cmd -f .env.javascript-guest npm run start",
+		"start:go-cli": "./node_modules/.bin/env-cmd -f .env.go-cli npm run start",
 		"build": "react-scripts build",
 		"build:java": "./node_modules/.bin/env-cmd -f .env.java npm run build",
 		"build:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run build",
@@ -44,6 +45,7 @@
 		"build:ios": "./node_modules/.bin/env-cmd -f .env.ios npm run build",
 		"build:java-guest": "./node_modules/.bin/env-cmd -f .env.java-guest npm run build",
 		"build:javascript-guest": "./node_modules/.bin/env-cmd -f .env.javascript-guest npm run build",
+		"build:go-cli": "./node_modules/.bin/env-cmd -f .env.go-cli npm run build",
 		"test": "react-scripts test",
 		"indexdocs": "source ../scripts/docindex.sh ./public/docs"
 	},

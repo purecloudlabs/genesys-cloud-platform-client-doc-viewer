@@ -73,15 +73,9 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 		],
 	},
 	[SDKLanguage.CLI]: {
-		title: 'Platform API <<XXX>> Client',
+		title: 'Platform API CLI SDK',
 		badgeColor: '#007ec6',
-		badges: [
-			// {
-			// 	text: 'Nuget',
-			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
-			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
-			// },
-		],
+		badges: [],
 	},
 	[SDKLanguage.iOS]: {
 		title: 'Platform API iOS Client',
