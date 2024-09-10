@@ -53,7 +53,8 @@ export default function DocViewerLayout() {
 					.map((s) => {
 						const match = pathAndExtensionRegex.exec(s);
 						return match ? match[1] : s;
-					});
+					})
+					.filter((s) => s !== 'index');
 				setNavItems(items);
 			} catch (err) {
 				console.log('failed to load doc index', err);
