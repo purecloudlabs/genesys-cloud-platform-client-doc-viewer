@@ -83,14 +83,14 @@ const sdkConfigs: { [language in SDKLanguage]: SDKDocConfig } = {
 		badges: [],
 	},
 	[SDKLanguage.WebMessagingJava]: {
-		title: 'Platform API <<XXX>> Client',
+		title: 'Web Messaging SDK - Java',
 		badgeColor: '#007ec6',
 		badges: [
-			// {
-			// 	text: 'Nuget',
-			// 	packageBadgeURL: 'https://img.shields.io/nuget/v/PureCloudPlatform.Client.V2',
-			// 	packageBadgeLink: 'https://www.nuget.org/packages/PureCloudPlatform.Client.V2/',
-			// },
+			{
+				text: 'Maven Central',
+				packageBadgeURL: 'https://maven-badges.herokuapp.com/maven-central/cloud.genesys/web-messaging-sdk/badge.svg',
+				packageBadgeLink: 'https://maven-badges.herokuapp.com/maven-central/cloud.genesys/web-messaging-sdk',
+			},
 		],
 	},
 	[SDKLanguage.JavaGuest]: {
