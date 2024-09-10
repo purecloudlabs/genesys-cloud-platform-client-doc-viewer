@@ -72,12 +72,21 @@ export default function DocViewerLayout() {
 		if (match && match[2]) {
 			let newLocation = match[1] + location.hash;
 			navigate(newLocation, { replace: true });
-			document.getElementById('navigation-content')?.scrollTo(0, 0);
 			return;
 		}
 		updateDocument();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [location]);
+
+	useEffect(() => {
+		if (window.location.hash) {
+			// Scroll to hash location
+			scrollIntoView();
+		} else {
+			// Scroll to top of content
+			document.getElementById('markdown-content')?.scrollTo(0, 0);
+		}
+	}, [markdown]);
 
 	useEffect(() => {
 		const term = filterTerm.toLowerCase();
@@ -150,7 +159,7 @@ export default function DocViewerLayout() {
 				}
 			}
 
-			// Update scroll anchor
+			// Scroll to hash location
 			scrollIntoView();
 		} catch (err: any) {
 			console.error(err);
@@ -231,7 +240,7 @@ ${msg}
 					<div className="grip"></div>
 				</div>
 			</div>
-			<div className="content" style={{ marginLeft: `${navDisplayWidth}px` }}>
+			<div id="markdown-content" className="content" style={{ marginLeft: `${navDisplayWidth}px` }}>
 				{markdown && <MarkdownDisplay markdown={markdown} />}
 			</div>
 		</div>
