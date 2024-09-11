@@ -1,0 +1,76 @@
+{
+	"name": "app",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@testing-library/jest-dom": "^5.17.0",
+		"@testing-library/react": "^13.4.0",
+		"@testing-library/user-event": "^13.5.0",
+		"@types/jest": "^27.5.2",
+		"@types/node": "^16.18.104",
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"axios": "^1.7.5",
+		"genesys-dev-icons": "^1.1.0",
+		"genesys-react-components": "^1.0.3",
+		"react": "^18.3.1",
+		"react-dom": "^18.3.1",
+		"react-router": "^6.26.0",
+		"react-router-dom": "^6.26.0",
+		"react-scripts": "5.0.1",
+		"recoil": "^0.7.7",
+		"recoil-nexus": "^0.5.1",
+		"sass": "^1.77.8",
+		"typescript": "^4.9.5",
+		"web-vitals": "^2.1.4",
+		"yeast-core": "^1.1.0",
+		"yeast-markdown-parser": "^1.5.0",
+		"yeast-react-renderer": "^1.1.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"start:java": "./node_modules/.bin/env-cmd -f .env.java npm run start",
+		"start:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run start",
+		"start:python": "./node_modules/.bin/env-cmd -f .env.python npm run start",
+		"start:dotnet": "./node_modules/.bin/env-cmd -f .env.dotnet npm run start",
+		"start:ios": "./node_modules/.bin/env-cmd -f .env.ios npm run start",
+		"start:java-guest": "./node_modules/.bin/env-cmd -f .env.java-guest npm run start",
+		"start:javascript-guest": "./node_modules/.bin/env-cmd -f .env.javascript-guest npm run start",
+		"start:go-cli": "./node_modules/.bin/env-cmd -f .env.go-cli npm run start",
+		"start:webmessagingjava": "./node_modules/.bin/env-cmd -f .env.webmessagingjava npm run start",
+		"build": "react-scripts build",
+		"build:java": "./node_modules/.bin/env-cmd -f .env.java npm run build",
+		"build:javascript": "./node_modules/.bin/env-cmd -f .env.javascript npm run build",
+		"build:python": "./node_modules/.bin/env-cmd -f .env.python npm run build",
+		"build:dotnet": "./node_modules/.bin/env-cmd -f .env.dotnet npm run build",
+		"build:ios": "./node_modules/.bin/env-cmd -f .env.ios npm run build",
+		"build:java-guest": "./node_modules/.bin/env-cmd -f .env.java-guest npm run build",
+		"build:javascript-guest": "./node_modules/.bin/env-cmd -f .env.javascript-guest npm run build",
+		"build:go-cli": "./node_modules/.bin/env-cmd -f .env.go-cli npm run build",
+		"build:webmessagingjava": "./node_modules/.bin/env-cmd -f .env.webmessagingjava npm run build",
+		"test": "react-scripts test",
+		"indexdocs": "source ../scripts/docindex.sh ./public/docs"
+	},
+	"eslintConfig": {
+		"extends": [
+			"react-app",
+			"react-app/jest"
+		]
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"env-cmd": "^10.1.0"
+	}
+}
